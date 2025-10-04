@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artistry by Alishba | Handmade Crochet, Jewelry & Trays</title>
+
+  <!-- Fonts & Animation Library -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* ---------- Global Styles ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffdf8;
+      color: #3c3c3c;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 70px;
+      transition: 0.4s;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #b38b59;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #3c3c3c;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #b38b59;
+      width: 0%;
+      transition: 0.3s;
+      margin-top: 3px;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
+      url('https://images.unsplash.com/photo-1622396481623-59dc06b2ef2f') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h2 {
+      font-size: 54px;
+      font-family: 'Playfair Display', serif;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin: 15px 0 25px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #b38b59, #e7c89b);
+      color: white;
+      border: none;
+      padding: 14px 35px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(179,139,89,0.3);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 20px rgba(179,139,89,0.4);
+    }
+
+    /* Floating jewelry animation */
+    .floating-jewel {
+      position: absolute;
+      width: 120px;
+      opacity: 0.7;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .jewel1 { top: 20%; left: 10%; animation-delay: 0s; }
+    .jewel2 { top: 70%; right: 15%; animation-delay: 2s; }
+    .jewel3 { bottom: 15%; left: 30%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* ---------- Categories ---------- */
+    .categories {
+      padding: 100px 60px;
+      text-align: center;
+      background-color: #fffaf4;
+    }
+
+    .categories h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      color: #b38b59;
+      margin-bottom: 15px;
+    }
+
+    .categories p {
+      color: #666;
+      font-size: 17px;
+      margin-bottom: 40px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+    }
+
+    .category {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(179,139,89,0.3);
+    }
+
+    .category img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .category:hover img {
+      transform: scale(1.08);
+    }
+
+    .category h3 {
+      margin: 20px 0 10px;
+      color: #3c3c3c;
+      font-weight: 600;
+    }
+
+    .category p {
+      color: #777;
+      font-size: 15px;
+      padding: 0 20px 20px;
+    }
+
+    /* ---------- About Section ---------- */
+    .about {
+      background-color: #fff;
+      padding: 100px 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about img {
+      width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(179,139,89,0.3);
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      color: #b38b59;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .about-text p {
+      color: #555;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      background: #f9efe3;
+      padding: 100px 60px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: #b38b59;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #b38b59, #e7c89b);
+      color: #fff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(179,139,89,0.3);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background-color: #b38b59;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    footer p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Artistry by Alishba</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#categories">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <img src="https://pngimg.com/uploads/diamond/diamond_PNG6698.png" class="floating-jewel jewel1" alt="">
+    <img src="https://pngimg.com/uploads/diamond/diamond_PNG6703.png" class="floating-jewel jewel2" alt="">
+    <img src="https://pngimg.com/uploads/diamond/diamond_PNG6692.png" class="floating-jewel jewel3" alt="">
+
+    <div>
+      <h2>Luxury Handcrafted Elegance</h2>
+      <p>Discover timeless Crochet, Jewelry, and Trays — made with love.</p>
+      <a href="#categories" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories" data-aos="fade-up">
+    <h2>Our Signature Collections</h2>
+    <p>Each design reflects craftsmanship and creativity ✨</p>
+    <div class="category-grid">
+      <div class="category" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1627467329984-38b7a742d75d" alt="Crochet">
+        <h3>Crochet Creations</h3>
+        <p>Soft, cozy, and delicately crafted crochet art that warms hearts.</p>
+      </div>
+      <div class="category" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1611066525396-8e1c8ab6e954" alt="Jewelry">
+        <h3>Jewelry Collection</h3>
+        <p>Elegant handmade jewelry to make every moment sparkle.</p>
+      </div>
+      <div class="category" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1597097757450-9a5a7a95f5a8" alt="Trays">
+        <h3>Decorative Trays</h3>
+        <p>Hand-painted trays that bring charm and grace to your décor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about" data-aos="fade-right">
+    <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143" alt="About Us">
+    <div class="about-text">
+      <h2>About Artistry by Alishba</h2>
+      <p>We are a creative studio specializing in handcrafted treasures — where modern design meets artisanal beauty. From intricate crochet to elegant jewelry and exquisite trays, every piece tells a story of patience, art, and heart.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Get in Touch 💌</h2>
+    <p>Custom orders, collaborations, or questions — we’d love to hear from you!</p>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Artistry by Alishba. All Rights Reserved.</p>
+    <p>📧 artistrybyalishba@gmail.com | 📞 +92 300 1234567 | 📍 Karachi, Pakistan</p>
+  </footer>
+
+  <!-- Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1200, once: true });</script>
+</body>
+</html>
+
